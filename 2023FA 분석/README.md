@@ -62,7 +62,8 @@
 - x1b, x2b, x3b는 서로 상관관계가 있음
 - 당연히 선수의 기량은 부상(위에서 보정)과 극심한 부진, 노쇠화를 제외하면 최근 3년 간의 war이 갑자기 크게 변화하는 일은 드물기 때문
 - 모델 생성 이후 독립변수 간의 다중공선성 확인
-
+<br>
+## 모델링
 - Start_age, X1b, X2b, X3b, Start_year, rank를 다중회귀모델의 변수로 사용
 - But 대부분의 회귀분석 기본가정 위배(정규성, 독립성, 등분산성)
 - 쿡의 거리를 통해 모델에 영향을 많이 주는 관측치 제외
@@ -75,9 +76,9 @@
 
 > 위 모델의 경우 회귀분석의 기본 가정을 만족
 
-![정규성](https://user-images.githubusercontent.com/63768509/227697388-c3eb7976-4cd4-45f5-a64e-3d8bf07e9b5a.jpg)
-![독립성](https://user-images.githubusercontent.com/63768509/227697391-ed4a93d2-9d35-4cac-8da1-30c3aa60e1af.jpg)
-![등분산성](https://user-images.githubusercontent.com/63768509/227697392-b73d64e9-e7a0-4534-bc93-6861b429fefb.jpg)
-![다중공선성](https://user-images.githubusercontent.com/63768509/227697398-5e915187-52da-44d8-8f5f-c04d2278b924.jpg)
+![정규성](https://user-images.githubusercontent.com/63768509/227697388-c3eb7976-4cd4-45f5-a64e-3d8bf07e9b5a.jpg)<br>
+![독립성](https://user-images.githubusercontent.com/63768509/227697391-ed4a93d2-9d35-4cac-8da1-30c3aa60e1af.jpg)<br>
+![등분산성](https://user-images.githubusercontent.com/63768509/227697392-b73d64e9-e7a0-4534-bc93-6861b429fefb.jpg)<br>
+![다중공선성](https://user-images.githubusercontent.com/63768509/227697398-5e915187-52da-44d8-8f5f-c04d2278b924.jpg)<br>
 
 
