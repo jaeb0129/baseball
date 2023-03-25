@@ -79,9 +79,33 @@
 
 > 위 모델의 경우 회귀분석의 기본 가정을 만족
 
-![정규성](https://user-images.githubusercontent.com/63768509/227697388-c3eb7976-4cd4-45f5-a64e-3d8bf07e9b5a.jpg)<br>
-![독립성](https://user-images.githubusercontent.com/63768509/227697391-ed4a93d2-9d35-4cac-8da1-30c3aa60e1af.jpg)<br>
-![등분산성](https://user-images.githubusercontent.com/63768509/227697392-b73d64e9-e7a0-4534-bc93-6861b429fefb.jpg)<br>
-![다중공선성](https://user-images.githubusercontent.com/63768509/227697398-5e915187-52da-44d8-8f5f-c04d2278b924.jpg)<br>
+|![정규성](https://user-images.githubusercontent.com/63768509/227697388-c3eb7976-4cd4-45f5-a64e-3d8bf07e9b5a.jpg)|<br>
+|![독립성](https://user-images.githubusercontent.com/63768509/227697391-ed4a93d2-9d35-4cac-8da1-30c3aa60e1af.jpg)|<br>
+|![등분산성](https://user-images.githubusercontent.com/63768509/227697392-b73d64e9-e7a0-4534-bc93-6861b429fefb.jpg)|<br>
+|![다중공선성](https://user-images.githubusercontent.com/63768509/227697398-5e915187-52da-44d8-8f5f-c04d2278b924.jpg)|<br>
 
+> Salary_yearly = (Start_age * -0.16351) + (X1b * 0.53815) + (X2b * 0.35259) + (X1b * 0.53815+ -367.7023) + (Start_year * 0.19172) + (rankA * -6.34136) + (rankB * -8.68242) + (rankC * -10.14557) 
+- rankA~C는 더미변수, rankA~C 모두 해당안되는 경우 -> rankS
+- Adjusted R-squared: 0.8548 
+- 모델의 R^2(결정계수, 설명력)이 굉장히 좋음
 
+## 2023시즌 FA대상자들에게 모델 적용
+|![final](https://user-images.githubusercontent.com/63768509/227698550-5e771dbe-7541-4597-b22b-186351c47ed8.jpg)|
+- 강리호, 정찬헌은 미계약자
+
+## 3. 포수WAR 보정 후 재예측
+> 포수FA들의 연평균액의 예측과 실제 금액의 괴리가 큼
+> 프레이밍을 통한 득점은 sWAR에 적용 되지 않음 -> 프레이밍 득점을 war로 환산(1war = 10득점으로 함)
+
+# 적용 후 결과
+|![포수FA](https://user-images.githubusercontent.com/63768509/227698777-31f688c8-3529-4164-858f-151364d16077.jpg)|
+
+<br>
+-프레이밍이 좋은 유강남, 박세혁의 경우 예상 연평균액 상승
+-프레이밍에 약점이 있는 양의지, 박동원의 경우 예상 연평균액 하락
+-그러나 여전히 차이는 큼
+
+## 마치며
+-포수FA의 경우 포지션 특성상 리그에 한정된 자원으로 프리미엄이 붙음
+-포지션을 고려하지 않아 포지션별 영향력을 반영 못함. 앞서 언급한 포수 포지션의 경우 특히 예상과 차이가 있었음
+-극단치(너무 싸게 계약 ex)권희동, 너무 비싸게)는 회귀분석 특성상 빗나가는 경우가 있음
