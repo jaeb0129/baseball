@@ -88,7 +88,7 @@
 
 - rankA-C는 더미변수, rankA-C 모두 해당안되는 경우 -> rankS
 - Adjusted R-squared: 0.8548 
-- 모델의 R^2(결정계수, 설명력)이 굉장히 좋음
+- 모델의 R^2(결정계수, 설명력)이 0.8548로 굉장히 잘 예측
 
 ## 2023시즌 FA대상자들에게 모델 적용
 ![final](https://user-images.githubusercontent.com/63768509/227698550-5e771dbe-7541-4597-b22b-186351c47ed8.jpg)
