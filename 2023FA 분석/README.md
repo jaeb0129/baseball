@@ -21,9 +21,9 @@
 ## Data 설명
 ---
 
-역대 KBO 리그 FA 데이터(2023년까지)
+역대 KBO 리그 FA 데이터(2012~23년까지)
 
-- 총 188개의 관측치, 15개의 변수
+- 총 188개의 관측치, 14개의 변수
 - 결측치 없음
 - 해외 리턴 사례, 다년 계약은 제외
 - 부상으로 인한 시즌OUT-> 나머지 연도 평균값으로 대체
@@ -40,18 +40,44 @@
 | X7 2b | 2년전 sWAR |
 | X8 1b | 1년전 sWAR |
 | X9 3y_war | 3년간 war 합계 |
-| X10 Year_sum | 총 계약연수 |
-| X11 Salary/yearly_sum | 연평균액 |
-| X12 rank | 정성평가한 선수들의 시장에서의 등급, 4개의 levels('S', 'A', 'B', 'C')|
+| X10 Start_year | FA연도 ex) 2023 |
+| X11 Year_sum | 총 계약연수 |
+| X12 Salary/yearly_sum | 연평균액 |
+| X13 rank | 정성평가한 선수들의 시장에서의 등급, 4개의 levels('S', 'A', 'B', 'C')|
 | Y Salary/yearly | 연평균액을 소수점 둘째 자리에서 반올림 |
 
 > 2012~22시즌 FA 계약자-> train data # 167명
 > 2023시즌 FA 대상자 -> test data # 21명
+
+
+## 2. Multiple Linear regression
+
+> 다중회귀분석을 통해 2023 FA대상자들의 시장에서의 예상 금액을 알아본다.
 
 -변수간 상관계수
 
 ![상관관계](https://user-images.githubusercontent.com/63768509/227696344-198b945f-d562-4c28-a8ab-cdf44d05a958.jpg)
 <br>
 
-## 2. Multiple Linear regression
+- x1b, x2b, x3b는 서로 상관관계가 있음
+- 당연히 선수의 기량은 부상(위에서 보정)과 극심한 부진, 노쇠화를 제외하면 최근 3년 간의 war이 갑자기 크게 변화하는 일은 드물기 때문
+- 모델 생성 이후 독립변수 간의 다중공선성 확인
+
+- Start_age, X1b, X2b, X3b, Start_year, rank를 다중회귀모델의 변수로 사용
+- But 대부분의 회귀분석 기본가정 위배(정규성, 독립성, 등분산성)
+- 쿡의 거리를 통해 모델에 영향을 많이 주는 관측치 제외
+- 1차 제외: 손아섭 롯데-> 4년 64억, 오지환 LG 4년 40억, 양의지 두산->NC 4년 125억, 
+- 이재원 SK(SSG) 4년 69억, 손아섭 롯데 4년 98억
+- 2차 제외: 김재환 4년 115억, 박건우 두산->NC 6년 100억, 김태균 한화 4년 84억, 유한준 넥센->KT 4년 60억
+
+# 최종 모델
+![모델 최종](https://user-images.githubusercontent.com/63768509/227697111-1a378fef-c262-4ee3-b71a-12d1206fd456.jpg)
+
+> 위 모델의 경우 회귀분석의 기본 가정을 만족
+
+![정규성](https://user-images.githubusercontent.com/63768509/227697388-c3eb7976-4cd4-45f5-a64e-3d8bf07e9b5a.jpg)
+![독립성](https://user-images.githubusercontent.com/63768509/227697391-ed4a93d2-9d35-4cac-8da1-30c3aa60e1af.jpg)
+![등분산성](https://user-images.githubusercontent.com/63768509/227697392-b73d64e9-e7a0-4534-bc93-6861b429fefb.jpg)
+![다중공선성](https://user-images.githubusercontent.com/63768509/227697398-5e915187-52da-44d8-8f5f-c04d2278b924.jpg)
+
 
