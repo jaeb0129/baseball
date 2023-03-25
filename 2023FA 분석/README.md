@@ -83,6 +83,7 @@
 |![독립성](https://user-images.githubusercontent.com/63768509/227697391-ed4a93d2-9d35-4cac-8da1-30c3aa60e1af.jpg)|<br>
 |![등분산성](https://user-images.githubusercontent.com/63768509/227697392-b73d64e9-e7a0-4534-bc93-6861b429fefb.jpg)|<br>
 |![다중공선성](https://user-images.githubusercontent.com/63768509/227697398-5e915187-52da-44d8-8f5f-c04d2278b924.jpg)|<br>
+| ------------------------------- |
 
 > Salary_yearly = (Start_age * -0.16351) + (X1b * 0.53815) + (X2b * 0.35259) + (X1b * 0.53815+ -367.7023) + (Start_year * 0.19172) + (rankA * -6.34136) + (rankB * -8.68242) + (rankC * -10.14557) 
 - rankA~C는 더미변수, rankA~C 모두 해당안되는 경우 -> rankS
@@ -90,14 +91,14 @@
 - 모델의 R^2(결정계수, 설명력)이 굉장히 좋음
 
 ## 2023시즌 FA대상자들에게 모델 적용
-|![final](https://user-images.githubusercontent.com/63768509/227698550-5e771dbe-7541-4597-b22b-186351c47ed8.jpg)|
+![final](https://user-images.githubusercontent.com/63768509/227698550-5e771dbe-7541-4597-b22b-186351c47ed8.jpg)
 - 강리호, 정찬헌은 미계약자
 
 ## 3. 포수WAR 보정 후 재예측
 > 포수FA들의 연평균액의 예측과 실제 금액의 괴리가 큼
 > 프레이밍을 통한 득점은 sWAR에 적용 되지 않음 -> 프레이밍 득점을 war로 환산(1war = 10득점으로 함)
 
-# 적용 후 결과
+## 적용 후 결과
 |![포수FA](https://user-images.githubusercontent.com/63768509/227698777-31f688c8-3529-4164-858f-151364d16077.jpg)|
 
 <br>
