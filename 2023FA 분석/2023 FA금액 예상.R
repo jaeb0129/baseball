@@ -1,6 +1,5 @@
 # 2023 FA 분석
 library(dplyr)
-library(ggplot2)
 library(car)
 library(lmtest)
 library(olsrr)
