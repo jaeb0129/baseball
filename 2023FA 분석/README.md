@@ -86,7 +86,7 @@
 
 > Salary_yearly = (Start_age * -0.16351) + (X1b * 0.53815) + (X2b * 0.35259) + (X1b * 0.53815+ -367.7023) + (Start_year * 0.19172) + (rankA * -6.34136) + (rankB * -8.68242) + (rankC * -10.14557) 
 
-- rankA~C는 더미변수, rankA~C 모두 해당안되는 경우 -> rankS
+- rankA-C는 더미변수, rankA-C 모두 해당안되는 경우 -> rankS
 - Adjusted R-squared: 0.8548 
 - 모델의 R^2(결정계수, 설명력)이 굉장히 좋음
 
