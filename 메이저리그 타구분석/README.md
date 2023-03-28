@@ -3,7 +3,7 @@
 
 ![MLB 구장 시각화](https://user-images.githubusercontent.com/63768509/228133993-0a0b3bb9-a6db-473d-946f-efda68f71914.jpg)
 
-- MLB구장화시각화
+- MLB구장 시각화
 
 <br>
 
