@@ -148,8 +148,3 @@ monte<- function(x){
   write.csv(df, file = 'C:/Users/jaeb0/Desktop/df1.csv')
 }
 monte(10000)
-
-result <- read.csv('C:/Users/jaeb0/Desktop/df1.csv')
-table(result$SSG)
-a<-sapply(result, table)
-prop.table(a[[4]])
