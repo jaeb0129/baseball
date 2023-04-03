@@ -122,7 +122,7 @@ monte<- function(x){
   }
   write.csv(df, file = 'C:/Users/jaeb0/Desktop/df1.csv')
 }
-monte(10)
+monte(10000)
 
 result <- read.csv('C:/Users/jaeb0/Desktop/df.csv')
 table(result$SSG)
