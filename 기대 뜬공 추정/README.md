@@ -6,9 +6,7 @@
 
 ## 결과
 
-![기대 뜬공%](https://user-images.githubusercontent.com/63768509/230011767-e3acc0ef-84b5-4a95-b212-540a38ee66e1.png)
-
-![기대 GB%](https://user-images.githubusercontent.com/63768509/230026238-5da432ce-3038-4a5f-9115-9587192c4e24.png)
+![기대 뜬공%](https://user-images.githubusercontent.com/63768509/230011767-e3acc0ef-84b5-4a95-b212-540a38ee66e1.png) ![기대 GB%](https://user-images.githubusercontent.com/63768509/230026238-5da432ce-3038-4a5f-9115-9587192c4e24.png)
 
 - 타자보다는 투수가 뜬공, 땅볼 유도의 몫이 큰 것으로 나옴(타자의 결과는 첨부하지 않음)
 
