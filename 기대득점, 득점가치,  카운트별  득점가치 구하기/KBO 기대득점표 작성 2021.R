@@ -1,4 +1,4 @@
-data2021 <- read.csv("C:/Users/jaeb0/KBO_crawler/save/2021.csv")
+data2021 <- read.csv("C:/Users/jaeb0/2021.csv")
 str(data2021)
 
 # install.packages("stringr")
@@ -112,7 +112,7 @@ rv(c('필드 아웃', '포스 아웃', '타구맞음 아웃'))
 
 
 # 볼카운트별 득점가치
-data2021a <- read.csv("C:/Users/jaeb0/KBO_crawler/save/2021.csv")
+data2021a <- read.csv("C:/Users/jaeb0/2021.csv")
 data2021a$STATE <- get.state(RUNNER1, RUNNER2, RUNNER3, data2021a$outs)
 data2021a$index <- with(data2021a, paste(gameID, pa_number))
 data2021a$count <- with(data2021a, paste(balls, strikes))
