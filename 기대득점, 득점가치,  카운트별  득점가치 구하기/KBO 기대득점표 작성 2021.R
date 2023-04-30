@@ -47,13 +47,6 @@ get.state <- function(runner1, runner2, runner3, outs){
 }
 data2021$STATE <- get.state(RUNNER1, RUNNER2, RUNNER3, data2021$outs)
 
-# 이닝 종료되지 않은 것은 제외
-#library(plyr)
-#data.outs <- ddply(data2021, .(HALF.INNING), summarize,
-                  # Outs.Inning=sum(EVENT_OUTS_CT))
-#data2021 <- merge(data2021, data.outs)
-#data2021C <- subset(data2021, Outs.Inning == 3) # 아웃카운트 3개(이닝종료) 추출
-
 # STATE 기준(24가지 상황)으로 RUNS.ROI(이닝 종료시까지 발생 득점)을 평균
 RUNS <-with(data2021, aggregate(RUNS.ROI, list(STATE), mean))
 RUNS
