@@ -101,6 +101,7 @@ rv('볼넷')
 rv('몸에 맞는 볼')
 rv('자동 고의4구')
 rv('삼진')
+rv('타병살타')
 rv(c('필드 아웃', '포스 아웃', '타구맞음 아웃'))
 
 
@@ -114,35 +115,37 @@ data2021a$count <- with(data2021a, paste(balls, strikes))
 data2021a <- data2021a %>% mutate(rv = case_when(pa_result %in% c('안타', '내야안타', '번트 안타') ~ rv(c('안타', '내야안타', '번트 안타')),
 pa_result == '2루타'~ rv('2루타'),
 pa_result == '3루타'~ rv('3루타'),
+pa_result == '홈런'~ rv('홈런'),
 pa_result == '볼넷'~ rv('볼넷'),
 pa_result == '몸에 맞는 볼'~ rv('몸에 맞는 볼'),
 pa_result == '자동 고의4구'~ rv('자동 고의4구'),
 pa_result == '삼진'~ rv('삼진'),
+pa_result == '병살타'~ rv('병살타'),                                                 
 pa_result %in% c('필드 아웃', '포스 아웃', '타구맞음 아웃') ~ rv(c('필드 아웃', '포스 아웃', '타구맞음 아웃')) ))
 
 #### 초구 승부의 득점가치 구하기
 # 0-0 -> 0-1 득점가치
 run_effect_1st_st <- data2021a %>% group_by(index) %>% select(count, pa_result, rv) %>%
   filter(count == '0 1' | pa_result != "") %>% .[which(duplicated(.$index)),] %>%
-  ungroup() %>% summarise(sum = sum(rv, na.rm=T)) %>% unlist(., use.name=F) # 총 -1614점, 22,004회
+  ungroup() %>% summarise(sum = sum(rv, na.rm=T)) %>% unlist(., use.name=F) 
 
 RV_of_1st_pitch_st <- run_effect_1st_st / nrow(data2021a %>% group_by(index) %>% select(count, pa_result, rv) %>%
                                                  filter(count == '0 1' | pa_result != "") %>% .[which(duplicated(.$index)),])
-RV_of_1st_pitch_st # 초구S는 타자 입장에서 팀득점을 -0.073점 감소시킨다. 
+RV_of_1st_pitch_st # 초구S는 타자 입장에서 팀득점을 -0.065점 감소시킨다. 
 
 # 0-0 -> 1-0 득점가치
 run_effect_1st_ball <- data2021a %>% group_by(index) %>% select(count, pa_result, rv) %>%
   filter(count == '1 0' | pa_result != "") %>% .[which(duplicated(.$index)),] %>%
-  ungroup() %>% summarise(sum = sum(rv, na.rm=T)) %>% unlist(., use.name=F) # 총 540점, 20,158회
+  ungroup() %>% summarise(sum = sum(rv, na.rm=T)) %>% unlist(., use.name=F) 
 
 RV_of_1st_pitch_ball <- run_effect_1st_ball / nrow(data2021a %>% group_by(index) %>% select(count, pa_result, rv) %>%
                                                      filter(count == '1 0' | pa_result != "") %>% .[which(duplicated(.$index)),])
-RV_of_1st_pitch_ball #초구B을 고르면 타자 입장에서 팀득점을 0.027점 증가시킨다. 
+RV_of_1st_pitch_ball #초구B을 고르면 타자 입장에서 팀득점을 0.042점 증가시킨다. 
 
 # 0-0 타격시 득점가치
 run_effect_1st_hitting <- data2021a %>% group_by(index) %>% select(count, pa_result, rv) %>% 
   filter(count == '0 0' & pa_result != "") %>%
-  ungroup() %>% summarise(sum = sum(rv, na.rm=T)) %>% unlist(., use.name=F) # 총 118.6746점, 6,124회
+  ungroup() %>% summarise(sum = sum(rv, na.rm=T)) %>% unlist(., use.name=F) 
 
 RV_of_1st_pitch_hitting <- run_effect_1st_hitting / nrow(data2021a %>% group_by(index) %>% select(count, pa_result, rv) %>% 
                                                            filter(count == '0 0' & pa_result != ""))
