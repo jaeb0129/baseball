@@ -8,7 +8,6 @@
 <br>
 
 
-![최종 확률](https://user-images.githubusercontent.com/63768509/229097677-3bd8de45-dfc5-4192-a8df-b09b56d3d315.png)
 
 - SSG의 1위 확률이 매우 높음
 - 1-5, 6-10위가 거의 확정 / 시즌이 아직 한 달 넘게 남았음에도 양극화가 심한 것을 알 수 있음
