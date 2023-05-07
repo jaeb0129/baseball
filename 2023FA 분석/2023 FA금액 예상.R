@@ -21,7 +21,7 @@ pairs.panels(fa_not23[c(6:9, 11, 14)])
 
 fa_not23
 
-fit1 <- lm(Salary_yearly ~ Start_age + X1b + X2b +X3b + Start_year + rank, data=fa_not23out1)
+fit1 <- lm(Salary_yearly ~ Start_age + X1b + X2b +X3b + Start_year + rank, data=fa_not23)
 summary(fit1)
 coef(fit1)
 
