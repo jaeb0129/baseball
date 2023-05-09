@@ -3,10 +3,9 @@
 
 - 10000번 시뮬레이션
 - 각 팀의 상대 승률은 log5 모형으로 구함
-- 피타고라스 승률-> Bradley-Terry 모형(피타고라스 승률로 talent 구하고 맞대결시 승률 구함)
 
-<br>
 
+![log5](https://user-images.githubusercontent.com/63768509/237015304-5f8af0ae-f2c1-4c81-80e7-18c84d0c8998.png)
 
 
 - SSG의 1위 확률이 매우 높음
