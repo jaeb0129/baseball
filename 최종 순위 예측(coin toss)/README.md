@@ -5,7 +5,6 @@
 - 10000번 시뮬레이션
 - 홈, 원정팀 각각 승률은 0.500 / coin toss
 
-<br>
 ![동전 던지기](https://user-images.githubusercontent.com/63768509/237009058-f239ba8f-9810-431c-8312-a03e8b638eca.png)
 
 
