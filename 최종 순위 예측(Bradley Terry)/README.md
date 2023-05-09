@@ -2,11 +2,9 @@
 
 - 10000번 시뮬레이션
 - 각 팀의 상대 승률은 Bradley-Terry 모형으로 구함
-- 피타고라스 승률-> Bradley-Terry 모형(피타고라스 승률로 talent 구하고 맞대결시 승률 구함)
-
-<br>
 
 
+![bt](https://user-images.githubusercontent.com/63768509/237024012-2742443a-8ca7-42f8-b2c5-4e3ad9c4067a.png)
 
 - SSG의 1위 확률이 매우 높음
 - 1-5, 6-10위가 거의 확정 / 시즌이 아직 한 달 넘게 남았음에도 양극화가 심한 것을 알 수 있음
