@@ -1,83 +1,50 @@
 # 몬테카를로 시뮬레이션을 통해 시즌 끝까지 돌려보기
 library(dplyr)
-HOME<-c('KW', 'KT', 'DB', 'SSG', 'KIA',
-       'KW', 'KT', 'DB', 'SSG', 'KIA',
-       'KIA', 'HW', 'DB', 'SSG',
-       'KIA', 'LT', 'HW',
-       'KT', 'LT', 'NC', 'LG', 'SL',
-       'KT', 'LT', 'NC', 'LG', 'SL',
-       'DB', 'SSG', 'KW', 'SL', 'KT',
-       'DB', 'SSG', 'KW', 'SL', 'KT',
-       'DB', 'KW', 'SL', 'LT', 'HW',
-       'DB', 'KW', 'SL', 'LT', 'HW',
-       'HW',  'DB', 'LT', 'NC', 'KIA',
-       'HW', 'DB', 'LT', 'NC', 'KIA',
-       'KIA', 'LG', 'SL', 'NC', 'LT',
-       'KIA', 'SL', 'NC', 'LT',
-       'LG', 'SL', 'KT', 'KW', 'SSG',
-       'LG', 'SL', 'KT', 'KW', 'SSG',
-       'SSG', 'KIA', 'HW', 'DB', 'KW',
-       'SSG', 'KIA', 'HW', 'DB', 'KW',
-       'SSG', 'NC', 'SL', 'LG', 'KW',
-       'SSG', 'NC', 'SL', 'LG', 'KW',
-       'LG', 'NC', 'KW', 'SSG',
-       'DB', 'SL', 'NC', 'SSG',
-       'HW', 'KT', 'NC',
-       'HW', 'KT', 'NC',
-       'LG', 'KIA', 'SL', 'HW', 'SSG',
-       'HW', 'LG', 'SL', 'SSG',
-       'LG', 'SL', 'KIA',
-       'HW', 'LG', 'LT',
-       'LT', 'HW',
-       'LG', 'KT',
-       'KIA', 'NC', 'DB', 'KT',
-       'KIA', 'NC', 'DB', 'HW', 
-       'KIA', 'NC', 'DB',
-       'NC', 'KIA', 'LT', 'SL', 'DB',
-       'KT',
-       'LG')
-AWAY<-c('HW', 'LG', 'LT', 'NC', 'SL',
-       'HW', 'LG', 'LT', 'NC', 'SL',
-       'KT', 'NC', 'SL', 'KW',
-       'KT', 'LG', 'NC',
-       'HW', 'KIA', 'DB', 'SSG', 'KW',
-       'HW', 'KIA', 'DB', 'SSG', 'KW',
-       'HW', 'KIA', 'LG', 'LT', 'NC',
-       'HW', 'KIA', 'LG', 'LT', 'NC',
-       'KIA', 'KT', 'LG', 'NC', 'SSG',
-       'KIA', 'KT', 'LG', 'NC', 'SSG',
-       'KT', 'LG', 'SSG', 'SL', 'KW',
-       'KT', 'LG', 'SSG', 'SL', 'KW',
-       'HW', 'KT', 'DB', 'SSG', 'KW', 
-       'HW', 'DB', 'SSG', 'KW',
-       'HW', 'KIA', 'LT', 'NC', 'DB',
-       'HW', 'KIA', 'LT', 'NC', 'DB',
-       'KT', 'LG','LT', 'NC', 'SL',
-       'KT', 'LG', 'LT', 'NC', 'SL',
-       'HW', 'KIA', 'KT', 'LT', 'DB',
-       'HW', 'KIA', 'KT', 'LT', 'DB',
-       'HW', 'KIA', 'LT', 'DB',
-       'HW', 'KIA', 'KT', 'LG',
-       'LG', 'DB', 'KW',
-       'LG', 'DB', 'SL',
-       'KT', 'LT', 'NC', 'DB', 'KW',
-       'LT', 'NC', 'DB', 'KW',
-       'NC', 'DB', 'SSG',
-       'KIA', 'NC', 'DB', 
-       'DB', 'SSG',
-       'KIA', 'SL',
-       'LG', 'LT', 'SSG', 'SL',
-       'LG', 'SSG', 'SL', 'KW',
-       'KT', 'LG', 'SL',
-       'HW', 'KT', 'LG', 'SSG', 'KW',
-       'NC',
-       'KT')
+library(rvest)
+library(tidyverse)
+library(forcats)
 
-length(HOME)
-length(AWAY)
+# Naver 프로야구 일정표 2022/09/01 ~ 2022/10/11 잔여 정규경기만 추출
+
+# 원정팀
+html %>% html_nodes('td') %>% html_nodes(css = 'span.team_lft') %>% html_text() 
+# 경기결과(취소는 'VS'로 표기)
+html %>% html_nodes('td') %>% html_nodes(css = 'strong.td_score') %>% html_text() 
+# 홈팀
+html %>% html_nodes('td') %>% html_nodes(css = 'span.team_rgt') %>% html_text()
+
+basic_url = 'https://sports.news.naver.com/kbaseball/schedule/index?&month=09&year=2022'
+urls <- NULL
+for(x in 0:1){
+  urls[x+1] <- paste0('https://sports.news.naver.com/kbaseball/schedule/index?&month=', x+9, '&year=2022')
+}
+urls
+
+away <- NULL
+home <- NULL
+score <- NULL
+for(url in urls){
+  html <- read_html(url)
+  away <- c(away, html %>% html_nodes('td') %>% html_nodes(css = 'span.team_lft') %>% html_text())
+  home <- c(home, html %>% html_nodes('td') %>% html_nodes(css = 'span.team_rgt') %>% html_text())
+  score <- c(score, html %>% html_nodes('td') %>% html_nodes(css = 'strong.td_score') %>% html_text()) 
+}
+
+schedule <- data.frame(away = away, home = home, score = score)
+schedule <- schedule %>% filter(score != 'VS')
+schedule <- schedule[1:147,] # 정규시즌만 추출
+
+schedule$away <- fct_collapse(schedule$away, HW = '한화', SL = '삼성', DB = '두산', LT = '롯데', KW = '키움')
+schedule$home <- fct_collapse(schedule$home, HW = '한화', SL = '삼성', DB = '두산', LT = '롯데', KW = '키움')
+schedule
+
+write.csv(schedule, 'C:/Users/jaeb0/Desktop/schedule.csv')
+schedule <- read.csv('C:/Users/jaeb0/Desktop/schedule.csv')
+schedule
+nrow(schedule) # 147경기
 
 sch <- function(x, y){
-  Schedule <- data.frame(HOME = x, AWAY = y)
+  Schedule <- data.frame(HOME = schedule$home, AWAY = schedule$away)
   Schedule %>% mutate(prob.home = rep(0.5, length(x))) %>%
     mutate(outcome = rbinom(nrow(Schedule), 1, prob.home),
            winner = ifelse(outcome, HOME, AWAY))-> Schedule
