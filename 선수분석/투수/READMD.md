@@ -5,7 +5,7 @@
 - offspead 구종은 2% 투구한 체인지업
 
 ## 로돈의 구종별 무브먼트
-![로돈 구종별 무브먼트](https://github.com/jaeb0129/baseball/assets/63768509/8a876819-daa0-4053-9241-69fff1412e32)
+![로돈 구종별 무브먼트](https://github.com/jaeb0129/baseball/assets/63768509/e490acd1-48b0-474d-9266-9a514477d7d3)
 
 ## 로돈의 구종, 좌우 스플릿별 투구 분포도
 ![로돈의 구종, 좌우 스플릿별 투구 분포도](https://github.com/jaeb0129/baseball/assets/63768509/bc6606bb-282d-452f-8ab7-1fe9b4b31a54)
