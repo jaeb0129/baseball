@@ -7,7 +7,14 @@
 ## 로돈의 구종별 무브먼트
 ![로돈 구종별 무브먼트](https://github.com/jaeb0129/baseball/assets/63768509/8a876819-daa0-4053-9241-69fff1412e32)
 
-
-
 ## 로돈의 구종, 좌우 스플릿별 투구 분포도
 ![로돈의 구종, 좌우 스플릿별 투구 분포도](https://github.com/jaeb0129/baseball/assets/63768509/bc6606bb-282d-452f-8ab7-1fe9b4b31a54)
+
+## 로돈 구종별 최고 구속
+![최고구속](https://github.com/jaeb0129/baseball/assets/63768509/9eba3c62-fc79-4004-a0ad-ee8eb47fb895)
+
+## 로돈 구종별 평균 구속
+![평균구속](https://github.com/jaeb0129/baseball/assets/63768509/0816f6cd-736d-4cbc-8b53-1bebda81bd08)
+
+## 로돈 구종별 평균 회전수
+![평균 회전수](https://github.com/jaeb0129/baseball/assets/63768509/8e2f23e7-f064-48ab-822d-b6fc8cb663d2)
