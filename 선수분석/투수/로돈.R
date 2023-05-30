@@ -67,11 +67,11 @@ ggplot(rodon, aes(plate_x, plate_z)) +
 
 
 ############# 무브먼트
-
-ggplot(rodon, aes(x=pfx_x, y = pfx_z, color = factor(pitch_name))) + 
+# cm단위로 바꿔줌 / 포수 시점 자료를 투수 시점 자료롤 바꿔줌
+ggplot(rodon, aes(x=-pfx_x*30.48, y = pfx_z*30.48, color = factor(pitch_name))) + 
   theme_classic()+
-  xlab('수평 무브먼트(.ft)')+
-  ylab('수직 무브먼트(.ft)') +
+  xlab('수평 무브먼트(.cm)')+
+  ylab('수직 무브먼트(.cm)') +
   scale_color_discrete(name="구종", labels = c('포심', '체인지업', '커브', '슬라이더')) +
   theme(legend.title=element_text(size=20, face="bold",color="red"),
         plot.title=element_text(size=20, color="blue")) +
@@ -93,11 +93,17 @@ PieDonut(data, aes(type, pitch_name, count=n), title = "Carlos Rodon's pitch typ
 
 ############ 평균 구속
 mean <- rodon %>% group_by(pitch_name) %>% summarise(mean = mean(release_speed)) 
-
+ggplot(mean, aes(reorder(pitch_name,mean), mean, fill=pitch_name))+
+  geom_bar(stat='identity', width = 0.5) +
+  scale_x_discrete(labels = c('커브', '체인지업', '슬라이더', '포심'))+
+  xlab('구종')+
+  ylab('구속(mph)') + 
+  theme_classic() +
+  geom_text(aes(label=mean), vjust=0, hjust =-0.1)+
+  coord_flip() +
+  theme(legend.position = "none")
 ############ 최대 구속
 max <- rodon %>% group_by(pitch_name) %>% summarise(max = max(release_speed)) 
-max
-
 
 ggplot(max, aes(reorder(pitch_name,max), max, fill=pitch_name))+
   geom_bar(stat='identity', width = 0.5) +
@@ -109,6 +115,17 @@ ggplot(max, aes(reorder(pitch_name,max), max, fill=pitch_name))+
   geom_text(aes(label=max), vjust=0, hjust=-0.2) +
   scale_y_continuous(labels = c('포심', '슬라이더', '커브', '체인지업'))
   
+############ 평균 회전수
+spin <- rodon %>% group_by(pitch_name) %>% summarise(mean = round(mean(release_spin_rate, na.rm=TRUE),1)) 
+ggplot(spin, aes(reorder(pitch_name,mean), mean, fill=pitch_name))+
+  geom_bar(stat='identity', width = 0.5) +
+  scale_x_discrete(labels = c('커브', '체인지업', '슬라이더', '포심'))+
+  xlab('구종')+
+  ylab('회전수') + 
+  theme_classic() +
+  geom_text(aes(label=mean), vjust=0, hjust =-0.1)+
+  coord_flip() +
+  theme(legend.position = "none")
   
   
 
