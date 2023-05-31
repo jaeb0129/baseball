@@ -86,7 +86,7 @@
 ![등분산성](https://user-images.githubusercontent.com/63768509/227697392-b73d64e9-e7a0-4534-bc93-6861b429fefb.jpg)<br>
 ![다중공선성](https://user-images.githubusercontent.com/63768509/227697398-5e915187-52da-44d8-8f5f-c04d2278b924.jpg)<br>
 
-> Salary_yearly = (Start_age * -0.16351) + (X1b * 0.53815) + (X2b * 0.35259) + (X1b * 0.53815+ -367.7023) + (Start_year * 0.19172) + (rankA * -6.34136) + (rankB * -8.68242) + (rankC * -10.14557) 
+> Salary_yearly = (Start_age * -0.16351) + (X1b * 0.53815) + (X2b * 0.35259) + (X1b * 0.53815+ -367.7023) + (Start_year * 0.19172) + (rankA * -6.34136) + (rankB * -8.68242) + (rankC * -10.14557)- 367.7023
 
 - rankA-C는 더미변수, rankA-C 모두 해당안되는 경우 -> rankS
 - Adjusted R-squared: 0.8548 
