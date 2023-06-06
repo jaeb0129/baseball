@@ -20,13 +20,6 @@ library(forcats)
 
 # Naver 프로야구 일정표 2022/09/01 ~ 2022/10/11 잔여 정규경기만 추출
 
-# 원정팀
-html %>% html_nodes('td') %>% html_nodes(css = 'span.team_lft') %>% html_text() 
-# 경기결과(취소는 'VS'로 표기)
-html %>% html_nodes('td') %>% html_nodes(css = 'strong.td_score') %>% html_text() 
-# 홈팀
-html %>% html_nodes('td') %>% html_nodes(css = 'span.team_rgt') %>% html_text()
-
 basic_url = 'https://sports.news.naver.com/kbaseball/schedule/index?&month=09&year=2022'
 urls <- NULL
 for(x in 0:1){
