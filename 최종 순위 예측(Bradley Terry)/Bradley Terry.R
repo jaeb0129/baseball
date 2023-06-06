@@ -50,7 +50,7 @@ schedule <- read.csv('C:/Users/jaeb0/Desktop/schedule.csv')
 schedule
 nrow(schedule) # 147경기
 
-sch <- function(x, y){
+sch <- function(){
   Schedule <- data.frame(HOME = schedule$home, AWAY = schedule$away)
   Schedule %>% rowwise() %>%
     mutate(outcome1 = result[HOME, AWAY],
@@ -65,7 +65,7 @@ sch <- function(x, y){
   return(Schedule)
 }
 
-sch(HOME, AWAY)
+sch()
 
 SSG = c()
 LG = c()
@@ -83,7 +83,7 @@ prev <- data.frame(team = c('SSG', 'LG', 'KT', 'KW', 'KIA', 'LT', 'NC', 'DB', 'S
 
 monte<- function(x){
   for (i in 1:x){
-    sch(HOME, AWAY) %>% group_by(winner) %>% summarise(n=n()) %>% arrange(desc(n))->winner
+    sch() %>% group_by(winner) %>% summarise(n=n()) %>% arrange(desc(n))->winner
     winner %>% inner_join(prev, by = c('winner' = 'team'))->winner
     
     winner %>% mutate(예상_승률 = (기존_승수+n)/(144-무승부)) %>% arrange(desc(예상_승률)) %>%
