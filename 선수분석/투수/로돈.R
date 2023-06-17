@@ -1,12 +1,13 @@
 mlb2022 <- read.csv('C:/Users/jaeb0/Desktop/baseball/mlb_pbp/mlb_pbp_2022.csv')
 head(mlb2022)
 
-rodon <- mlb2022 %>% filter(pitcher == 607074)
-head(rodon) 
-unique(rodon$pitch_name)
 library(dplyr)
 library(lattice)
 library(ggplot2)
+
+rodon <- mlb2022 %>% filter(pitcher == 607074)
+head(rodon) 
+unique(rodon$pitch_name)
 
 topKzone <- 3.5
 botKzone <- 1.5
@@ -36,9 +37,8 @@ k_zone_plot <- ggplot(NULL, aes(x = plate_x, y = plate_z)) +
   coord_equal() +
   scale_x_continuous("수평 로케이션(ft.)", limits = c(-2, 2)) +
   scale_y_continuous("수직 로케이션(ft.)", limits = c(-1, 4.5))
-}
 
-k_zone_plotr %+% rodon + 
+k_zone_plot %+% rodon + 
   geom_point(alpha = 0.5, color = 'red') + 
   ggtitle("2022시즌 카를로스 로돈 구종, 좌우 스플릿별 로케이션") + 
   theme(plot.title = element_text(hjust = 0.5))
@@ -99,10 +99,10 @@ ggplot(mean, aes(reorder(pitch_name,mean), mean, fill=pitch_name))+
   xlab('구종')+
   ylab('구속(mph)') + 
   theme_classic() +
-  geom_text(aes(label=mean), vjust=0, hjust =-0.1)+
-  coord_flip() +
+  geom_text(aes(label=mean), vjust=-0.5, hjust =0.5)+
+  coord_fixed(ratio=0.05)+
   theme(legend.position = "none")
-############ 최대 구속
+############ 최 구속
 max <- rodon %>% group_by(pitch_name) %>% summarise(max = max(release_speed)) 
 
 ggplot(max, aes(reorder(pitch_name,max), max, fill=pitch_name))+
@@ -110,21 +110,21 @@ ggplot(max, aes(reorder(pitch_name,max), max, fill=pitch_name))+
   scale_fill_discrete(name="구종", labels = c('포심', '체인지업', '커브', '슬라이더'))+
   xlab('구종')+
   ylab('구속(mph)') + 
-  coord_flip()+
   theme_classic() +
-  geom_text(aes(label=max), vjust=0, hjust=-0.2) +
-  scale_y_continuous(labels = c('포심', '슬라이더', '커브', '체인지업'))
+  geom_text(aes(label=max), vjust=-0.5, hjust=0.5)+
+  coord_fixed(ratio=0.05)+
+  theme(legend.position = "none")
   
 ############ 평균 회전수
-spin <- rodon %>% group_by(pitch_name) %>% summarise(mean = round(mean(release_spin_rate, na.rm=TRUE),1)) 
+spin <- rodon %>% group_by(pitch_name) %>% summarise(mean = round(mean(release_spin_rate, na.rm=TRUE),0)) 
 ggplot(spin, aes(reorder(pitch_name,mean), mean, fill=pitch_name))+
   geom_bar(stat='identity', width = 0.5) +
   scale_x_discrete(labels = c('커브', '체인지업', '슬라이더', '포심'))+
   xlab('구종')+
   ylab('회전수') + 
   theme_classic() +
-  geom_text(aes(label=mean), vjust=0, hjust =-0.1)+
-  coord_flip() +
+  geom_text(aes(label=mean), vjust=-0.3, hjust =0.5)+
+  coord_fixed(ratio=0.002) +
   theme(legend.position = "none")
   
   
