@@ -41,13 +41,13 @@
 - 좌, 우 가리지 않고 체인지업은 배제해도 될 정도로 투구를 함
 
 ## 로돈 구종별 최고 구속
-![구종별 최고 구속](https://github.com/jaeb0129/baseball/assets/63768509/487fd5ee-ed80-450c-81e0-f7eb671589ce)
+![최고구속](https://github.com/jaeb0129/baseball/assets/63768509/c9460c27-c7b2-421e-9c4b-3c3164ecb26a)
 
 ## 로돈 구종별 평균 구속
-![평균구속](https://github.com/jaeb0129/baseball/assets/63768509/0816f6cd-736d-4cbc-8b53-1bebda81bd08)
+![평균구속](https://github.com/jaeb0129/baseball/assets/63768509/b539ec90-afef-4b7e-a8e3-94e7cc3ec123)
 
 ## 로돈 구종별 평균 회전수
-![평균 회전수](https://github.com/jaeb0129/baseball/assets/63768509/8e2f23e7-f064-48ab-822d-b6fc8cb663d2)
+![평균회전수](https://github.com/jaeb0129/baseball/assets/63768509/fcaed9f8-2e25-477f-99c7-01d8ee9a86c9)
 - 2022시즌 로돈의 패스트볼 회전수는 상위 23%
 
 ### 삼진, 볼넷, 타구 지표
