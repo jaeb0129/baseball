@@ -6,6 +6,9 @@ kbo2022 <- read.csv('C:/Users/jaeb0/2022.csv', fileEncoding = "CP949",encoding =
 kbo2022 <- kbo2022 %>% filter(home_alias != '드림')
 View(kbo2022)
 
+plate_width <- 17 + 2 * (9/pi) # 홈플레이트 17인치, 야구공 둘레: 9인치
+# 스트라이크 존은 홈플레이트 너비 ± 0.947ft(양측에 야구공의 지름 너비 추가)
+
 taken_kbo <- kbo2022 %>%
   filter(pitch_result %in% c('볼', '스트라이크'))
 unique(taken_kbo$pitch_result)
